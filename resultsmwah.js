@@ -22,7 +22,7 @@ function calculateScore() {
     } else if (score >= 17) {
         meaning = "You are extermely delusional."
     } else if (score >= 7) {
-        meaning = "You are moderately delusional, which is the most common diagnosis."
+        meaning = "You are moderately delusional, which is the most common diagnosis.<br><br>You live a relatively comfortable life in the real world, and you are likely able to spend around the same amount of time hanging out with friends as you do enjoying TV, video games, and other media by yourself. Human beings are creatures that require delusions in moderation, for such a thing is the reason why our minds are so enriched. In your case, I'm sure you can enjoy your delusions while still making the best of your real life.<br><br>Going forward, it'll be important to maintain a good balance between real life and delusions. If you allow your delusions to run too wild, you may find yourself in danger of becoming a freak in no time at all."
      } else {
         meaning = "You are not delusional in the slightest." 
     }
