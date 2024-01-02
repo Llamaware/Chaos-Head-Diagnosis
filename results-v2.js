@@ -62,6 +62,7 @@ function calculateScore() {
     scoreDiv.innerHTML = "Total Score: " + totalScore + " / 60";
 	
     // Display subscores for each category
+	subscoreDiv.innerHTML = ""
     for (var category in categories) {
         subscoreDiv.innerHTML += '<br>' + category + ": " + categories[category];
     }
