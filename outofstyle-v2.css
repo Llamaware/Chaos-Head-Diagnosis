@@ -20,6 +20,10 @@ h2 {
     font-size: 1.5em;
 }
 
+#subscore {
+    text-align: center;
+}
+
 #meaning {
     text-align: center;
     font-size: .8em;

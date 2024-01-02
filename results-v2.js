@@ -57,12 +57,13 @@ function calculateScore() {
 
     // Display total score
     var scoreDiv = document.getElementById("score");
-	var meaningDiv = document.getElementById("meaning"); 
+	var meaningDiv = document.getElementById("meaning");
+	var subscoreDiv = document.getElementById("subscore");
     scoreDiv.innerHTML = "Total Score: " + totalScore + " / 60";
 	
     // Display subscores for each category
     for (var category in categories) {
-        scoreDiv.innerHTML += '<br>' + category + ": " + categories[category];
+        subscoreDiv.innerHTML += '<br>' + category + ": " + categories[category];
     }
 	
 	meaningDiv.innerHTML = meaning 
