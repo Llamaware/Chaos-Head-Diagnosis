@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Delusion Quiz v2</title>
+    <meta name="description" content="Whose eyes are those eyes?">
+    <meta name="keywords"
+        content="if the delusion becomes reality">
+    <meta name="theme-color" content="#08526e">
+    <link rel="icon" type="image/png"
+        href="https://i.ytimg.com/vi/gZOewUFQLhg/hqdefault.jpg" />
+  
+    <!--Main scipt-->
+    <script src="results-v2.js"></script>
+
+    <!--CSS-->
+    
+    <link rel="stylesheet" href="outofstyle-v2.css">
+</head>
+<html>
+
+    <p style="font-size: 100px"> <center> <b>Delusion Quiz<br>Version 2</b> </center></p>
+<p> <center> <em>This is an extended version of the diagnostic quiz given to the player in CHAOS;HEAD NOAH.</center></p></em>
+
+<break>
+
+ <p><center>If a statement applies to you, please check the box. There are 65 statements in total.</center></p>
+
+<div id=sherlock1>
+ <center><img src="https://lparchive.org/ChaosHead/Update%2019/35-NewGenFestival031.jpg" alt="alternatetext"></center>
+    </div>
+
+
+
+<body>
+ 
+    <br>
+    <div id="score"></div>
+    <br>
+    <div id="meaning"></div>
+    <br><br>
+    <div id="buttondiv">
+        <input class="button" id="refresh" type="submit" value="Clear Page" onClick="clearPage()">
+    </div>
+    <br>
+    <div id="list">
+        <ol>
+            <li data-category="Asocial" data-weight="1"> <input type="checkbox" id="1"> When you have business to take care of, you prefer to use e-mails over phone calls.<br><br>
+            <li data-category="Hallucination" data-weight="1"> <input type="checkbox" id="2"> Your ears ring every now and then.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="3"> You have felt someone's gaze and turned around before.<br><br>
+            <li data-category="Hallucination" data-weight="1"> <input type="checkbox" id="4"> You have seen objects that are supposedly stationary move for an instant.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="5"> You have experienced a premonition.<br><br>
+            <li data-category="Hallucination" data-weight="0.5"> <input type="checkbox" id="6"> While looking at a digital clock in passing, you've seen the same numbers appear in sequence.<br><br>
+            <li data-category="Emotional" data-weight="1"> <input type="checkbox" id="7"> You have already cried once this month.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="8"> You can masturbate using only your imagination.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="9"> When masturbating, you can visualize uninterrupted imagery.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="10"> You can daydream without closing your eyes.<br><br>
+            <li data-category="Imaginative" data-weight="0.5"> <input type="checkbox" id="11"> The frontal view of a car sometimes looks like a face.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="12"> You have a hard time going to the bathroom after watching a horror movie.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="13"> You cannot handle haunted houses.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="14"> When you start reading a book, you become so immersed in it that you lose track of time.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="15"> You believe that other planets inhabited by human-like creatures exist.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="16"> The personality attributed to your astrological sign matches your personality perfectly.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="17"> You are prone to motion sickness.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="18"> You believe there is a God.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="19"> You have a strong ability to sense the supernatural.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="20"> You have dreamed in color before.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="21"> You have been in a dream in which you knew you were dreaming.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="22"> You have experienced memory loss.<br><br>
+            <li data-category="Asocial" data-weight="1"> <input type="checkbox" id="23"> You have a hard time making eye contact with people.<br><br>
+            <li data-category="Cognitive" data-weight="0.5"> <input type="checkbox" id="24"> Merely the sight of sour food makes your mouth fill with saliva.<br><br>
+            <li data-category="Cognitive" data-weight="0.5"> <input type="checkbox" id="25"> You feel like yawning when other people do.<br><br>
+            <li data-category="Asocial" data-weight="1"> <input type="checkbox" id="26"> You prefer to do your shopping online instead of in-person.<br><br>
+            <li data-category="Asocial" data-weight="1"> <input type="checkbox" id="27"> You work from home or attend classes from home.<br><br>
+            <li data-category="Imaginative" data-weight="1.5"> <input type="checkbox" id="28"> You fantasize about being a different gender.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="29"> Your dreams have recurring characters or locations.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="30"> You have difficulty falling or staying asleep.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="31"> You believe that all events are predetermined and there is no such thing as free will.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="32"> You experience intrusive thoughts.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="33"> You have memories from a previous life.<br><br>
+            <li data-category="Imaginative" data-weight="2"> <input type="checkbox" id="34"> You have participated in cosplay.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="35"> You have participated in roleplay (such as tabletop RPGs or text-based roleplay).<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="36"> You have written fanfiction before.<br><br>
+            <li data-category="Placebo" data-weight="0"> <input type="checkbox" id="37"> You cannot see clearly without glasses or contacts.<br><br>
+            <li data-category="Placebo" data-weight="0"> <input type="checkbox" id="38"> You are left-handed.<br><br>
+            <li data-category="Asocial" data-weight="1"> <input type="checkbox" id="39"> You can type without looking at the keyboard.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="40"> You use a VPN to connect to the Internet.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="41"> You prefer to use Linux over Windows.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="42"> You believe that links to online quizzes are used to steal your IP address.<br><br>
+            <li data-category="Imaginative" data-weight="2"> <input type="checkbox" id="43"> You have one or more imaginary friends that you converse with.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="44"> You often lose track of what day of the week it currently is.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="45"> When listening to music, you sing along to the lyrics (silently or out loud).<br><br>
+            <li data-category="Emotional" data-weight="2"> <input type="checkbox" id="46"> You experience dramatic mood swings.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="47"> You unplug your webcam or microphone when it is not in use.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="48"> You believe that electromagnetic waves influence the human brain, causing people to act in strange ways.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="49"> You believe that within your lifetime, faster-than-light space travel will become possible for humans.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="50"> You use fake names and throwaway email addresses when signing up for new accounts.<br><br>
+			<li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="51"> You believe that you are special or unique and you deserve to be treated as such.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="52"> When reading a story, you imagine yourself as a character in the story and how you would act.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="53"> You feel like your friends secretly hate you behind your back.<br><br>
+            <li data-category="Paranoia" data-weight="1"> <input type="checkbox" id="54"> When in relationships, you often feel that your partner is hiding something from you.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="55"> You believe that another version of you exists in an alternate universe.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="56"> You believe that all living things possess a soul.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="57"> You believe that you could become one of the best in the world at a specific skill (such as drawing, playing an instrument, or competing in a sport).<br><br>
+            <li data-category="Hallucination" data-weight="1"> <input type="checkbox" id="58"> You have heard your name being called, even when nobody was around to do so.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="59"> You have previously felt that a familiar situation was entirely unfamiliar and new to you.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="60"> You believe that most adults' problems can be traced back to stunted sexual development.<br><br>
+            <li data-category="Imaginative" data-weight="0.75"> <input type="checkbox" id="61"> You have attempted to learn a foreign language in order to better enjoy your favorite types of media.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="62"> You have felt before that events happening to you in reality were actually a dream.<br><br>
+            <li data-category="Supernatural" data-weight="1"> <input type="checkbox" id="63"> A revelation has come to you within a dream before.<br><br>
+            <li data-category="Placebo" data-weight="0"> <input type="checkbox" id="64"> You enjoy cold drinks more than hot ones.<br><br>
+            <li data-category="Cognitive" data-weight="1"> <input type="checkbox" id="65"> Caffeinated drinks tend to make you sleepy more often than they keep you awake.<br><br>
+ 
+ 
+  <p> <center> Original Website made by Elliot and Haku, modified by onehalf </center> </p>
+  <p> <center> Original Questions and Results from CHAOS;HEAD NOAH, modified by onehalf </center> </p>                
+           <center>     <a href=https://hakuhakuwu.github.io/How-Messed-Up-is-Your-Fanfiction-Taste/fanfictiontest.html>Link to the original quiz</a>    </center>  
+
+        </ol>
+
+        <input class="button" id="submit" type="submit" value="Calculate Score" onClick="calculateScore()">
+        <input class="button" id="reset" type="submit" value="Clear Boxes" onClick="clearBoxes()">
+		<input class="button" id="checkAll" type="submit" value="Check All Boxes" onClick="checkAllBoxes()">
+        <div>
+
+          
+
+
+
+
+</body>
+
+</html>
