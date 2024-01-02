@@ -76,8 +76,10 @@ function calculateScore() {
 function clearPage() {
     clearBoxes() 
     var scoreDiv = document.getElementById("score"); 
+	var subscoreDiv = document.getElementById("subscore"); 
     var meaningDiv = document.getElementById("meaning"); 
     scoreDiv.innerHTML = "" 
+	subscoreDiv.innerHTML = "" 
     meaningDiv.innerHTML = "" 
     document.getElementById("refresh").style.display="none"; 
 }
