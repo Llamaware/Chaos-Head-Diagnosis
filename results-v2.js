@@ -4,17 +4,17 @@ window.onload = function() {
 
 
 function clearBoxes(){
-    var checkedBoxes = document.querySelectorAll('input[type="checkbox"]') 
-    for (var i = 0; i < checkedBoxes.length; i++) { 
+    var checkedBoxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkedBoxes.length; i++) {
         checkedBoxes[i].checked = false;
     }
 }
 
 function checkAllBoxes(){
-    var checkedBoxes = document.querySelectorAll('input[type="checkbox"]') 
-    for (var i = 0; i < checkedBoxes.length; i++) { 
+    var checkedBoxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkedBoxes.length; i++) {
         checkedBoxes[i].checked = true;
-		var event = new Event('change');
+        var event = new Event('change');
         checkedBoxes[i].dispatchEvent(event);
     }
 }
@@ -25,7 +25,7 @@ function calculateScore() {
     var totalScore = 0;
 
     var questions = document.querySelectorAll('li');
-    
+
     questions.forEach(function(question) {
         var checkbox = question.querySelector('input[type="checkbox"]');
         var isChecked = checkbox.checked;
@@ -41,8 +41,8 @@ function calculateScore() {
             categories[category] += weight;
         }
     });
-	
-	var meaning;
+
+    var meaning;
     if (totalScore >= 52) {
         meaning = "You are completely and utterly delusional.<br><br>It's very possible that you can no longer live without your delusions. You constantly fall in love with two-dimensional characters, and you wish you could walk straight into your computer screen. Real life will never be fulfilling to you. It's too late. But there's no need to feel guilty about it.<br><br>It doesn't matter what everyone else thinks. Surrender yourself fully to your delusions&#8212;to your imagination. As long as you're happy, nothing else matters. I just ask that you stay cognizant of your own health. Always make sure to eat, take care of yourself when you're sick, and take care of yourself in general. As long as you do that, you may continue living your blissful, luscious, delusional life, where you never have to worry about the pain of reality again.<br><br>Your delusions shall never betray you.<br><br>&quot;A Word from Takumi&quot;<br>D-Did you know? If you stay a virgin till you turn 30, you become a wizard and get magic powers. That's why 3D sucks shit. It's totally worthless, fuhihi... A girlfriend that lives inside your head is the best kind of girlfriend, after all. Everyone knows that, ROFLMAO."
     } else if (totalScore >= 42) {
@@ -52,35 +52,99 @@ function calculateScore() {
      } else if (totalScore >= 15) {
         meaning = "You are slightly delusional.<br><br>Perhaps not everything in your life is going favorably, but you have one or more things that you can devote yourself to, and you work hard at them every day. For this reason, you probably don't have much time for things like delusions. If you keep trying your hardest, you should be able to live a fulfilling life.<br><br>But I urge you to please be careful. If you by some chance fall, or lose one of the things you're devoted to, you may suddenly find yourself tempted to abandon everything and escape into delusions.<br><br>&quot;A Word from Nanami&quot;<br>If you're gonna turn out like my big bro, make sure you're someone other people can rely on when things get tough. Even better if you stay in tune with the latest fashion trends! Oh, and it'd make me real happy if you made sure to take care of your family too.<br><br>&quot;A Word from Sena&quot;<br>Whatever you're aiming to do, push as hard as you possibly can to achieve it. But, if you need a break, take one. It's not smart to work too hard&#8212;you'll just end up burning yourself out. I recommend adding a good walk to your daily routine."
      } else {
-        meaning = "You are not delusional in the slightest.<br><br>Your personality may be a bit too pragmatic, but you lead a very fulfilling life. You're adept at socializing, you have many friends, you've had many romantic relationships, and you're doing very well in work and school. You're most likely living a life in which delusions aren't even necessary. I cannot possibly understand why someone like you would want to take a quiz like this.<br><br>Please continue to live your happy, fulfilling life in the three-dimensional world. I'm sure that there are many fun and exciting things ahead of you.<br><br>&quot;A Word from Misumi&quot;<br>Whenever you see someone grinnin' 'cause they've got some delusion runnin' through their head, don't call 'em a freak! Instead, treat 'em like a friend! If you do that, chicks'll dig you because they think you're a nice guy, and you'll be even MORE likable!" 
+        meaning = "You are not delusional in the slightest.<br><br>Your personality may be a bit too pragmatic, but you lead a very fulfilling life. You're adept at socializing, you have many friends, you've had many romantic relationships, and you're doing very well in work and school. You're most likely living a life in which delusions aren't even necessary. I cannot possibly understand why someone like you would want to take a quiz like this.<br><br>Please continue to live your happy, fulfilling life in the three-dimensional world. I'm sure that there are many fun and exciting things ahead of you.<br><br>&quot;A Word from Misumi&quot;<br>Whenever you see someone grinnin' 'cause they've got some delusion runnin' through their head, don't call 'em a freak! Instead, treat 'em like a friend! If you do that, chicks'll dig you because they think you're a nice guy, and you'll be even MORE likable!"
     }
 
     // Display total score
     var scoreDiv = document.getElementById("score");
-	var meaningDiv = document.getElementById("meaning");
-	var subscoreDiv = document.getElementById("subscore");
+    var meaningDiv = document.getElementById("meaning");
+    var subscoreDiv = document.getElementById("subscore");
+    var subtypeDiv = document.getElementById("subtype");
     scoreDiv.innerHTML = "Total Score: " + totalScore + " / 60";
-	
+
     // Display subscores for each category
-	subscoreDiv.innerHTML = ""
+    subscoreDiv.innerHTML = ""
     for (var category in categories) {
-        subscoreDiv.innerHTML += '<br>' + category + ": " + categories[category];
+        var score = categories[category];
+        subscoreDiv.innerHTML += '<br>' + category + ": " + score;
+    }
+
+    var normalizedScores = {};
+
+    // Normalize the scores
+    for (var category in categories) {
+        var score = categories[category];
+        var maxScore = getMaxScoreForCategory(category); // Function to get the maximum possible score for each category
+        normalizedScores[category] = score / maxScore;
+    }
+
+
+    // Check if at least 3 normalized scores are within 1 point of each other
+    var balancedCount = 0;
+    for (var category1 in normalizedScores) {
+        for (var category2 in normalizedScores) {
+            if (category1 !== category2) {
+                var diff = Math.abs(normalizedScores[category1] - normalizedScores[category2]);
+                if (diff <= 0.05) {
+                    balancedCount++;
+                }
+            }
+        }
+    }
+
+    var highestCategory = "not any specific"; // Initialize with a default type
+
+    // Find the category with the highest normalized score
+    var highestNormalizedScore = -1;
+
+    for (var category in normalizedScores) {
+        var normalizedScore = normalizedScores[category];
+
+        if (normalizedScore > highestNormalizedScore) {
+            highestNormalizedScore = normalizedScore;
+            highestCategory = category;
+        }
     }
 	
-	meaningDiv.innerHTML = meaning 
-    document.getElementById("refresh").style.display="inline"; 
-    document.body.scrollTop = 0; 
+	if (balancedCount >= 4) {
+        // If at least 4 normalized scores are within 1 point of each other
+        subtypeDiv.innerHTML = "You are Balanced type.";
+    } else {
+        subtypeDiv.innerHTML = "You are " + highestCategory + " type.";
+    }
+
+    meaningDiv.innerHTML = meaning;
+    document.getElementById("refresh").style.display="inline";
+    document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-	
+
+}
+
+function getMaxScoreForCategory(category) {
+    // Define the maximum possible scores for each category
+    var maxScores = {
+        "Paranoid": 10,
+        "Supernatural": 13,
+        "Imaginative": 16.5,
+        "Asocial": 5,
+        "Emotional": 3,
+        "Cognitive": 9,
+        "Hallucination": 3.5,
+        "Placebo": 1
+    };
+
+    return maxScores[category];
 }
 
 function clearPage() {
-    clearBoxes() 
-    var scoreDiv = document.getElementById("score"); 
-	var subscoreDiv = document.getElementById("subscore"); 
-    var meaningDiv = document.getElementById("meaning"); 
-    scoreDiv.innerHTML = "" 
-	subscoreDiv.innerHTML = "" 
-    meaningDiv.innerHTML = "" 
-    document.getElementById("refresh").style.display="none"; 
+    clearBoxes()
+    var scoreDiv = document.getElementById("score");
+    var subscoreDiv = document.getElementById("subscore");
+    var subtypeDiv = document.getElementById("subtype");
+    var meaningDiv = document.getElementById("meaning");
+    scoreDiv.innerHTML = ""
+    subscoreDiv.innerHTML = ""
+    subtypeDiv.innerHTML = ""
+    meaningDiv.innerHTML = ""
+    document.getElementById("refresh").style.display="none";
 }
