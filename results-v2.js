@@ -80,16 +80,44 @@ function calculateScore() {
 
 
     // Check if at least 3 normalized scores are within 1 point of each other
-    var balancedCount = 0;
-    for (var category1 in normalizedScores) {
-        for (var category2 in normalizedScores) {
-            if (category1 !== category2) {
-                var diff = Math.abs(normalizedScores[category1] - normalizedScores[category2]);
-                if (diff <= 0.05) {
-                    balancedCount++;
-                }
+    var isBalanced = false;
+    var items = Object.keys(normalizedScores).map(function(key) {
+      return [key, normalizedScores[key]];
+    });
+
+    items.sort(function(first, second) {
+      return second[1] - first[1];
+    });
+
+    const flatten = arr => arr.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
+    items=flatten(items).filter(function(_, i) {
+        return i % 2 === 1;
+    })
+ 
+    var distThreshold = 0.05;
+    var isBalanced = false;
+    if (items.length < 3) {
+      isBalanced = true;
+    }
+    else {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i] > 0.0001) { 
+          if (i+3 < items.length) {
+            if (items[i] - items[i+2] < distThreshold) {
+              isBalanced = true;
+              break;
             }
+          }
+          else {
+            if (items[i] < distThreshold) {
+              if (8 - items.length > 2) {
+                isBalanced = true;
+                break;
+              }
+            }
+          }
         }
+      }
     }
 
     var highestCategory = "not any specific"; // Initialize with a default type
@@ -106,17 +134,17 @@ function calculateScore() {
         }
     }
 	
-	if (balancedCount >= 4) {
-        // If at least 4 normalized scores are within 1 point of each other
-        subtypeDiv.innerHTML = "You are Balanced type.";
-    } else {
-        subtypeDiv.innerHTML = "You are " + highestCategory + " type.";
-    }
+	if (isBalanced) {
+    // If at least 4 normalized scores are within 1 point of each other
+    subtypeDiv.innerHTML = "You are Balanced type.";
+  } else {
+      subtypeDiv.innerHTML = "You are " + highestCategory + " type.";
+  }
 
-    meaningDiv.innerHTML = meaning;
-    document.getElementById("refresh").style.display="inline";
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+  meaningDiv.innerHTML = meaning;
+  document.getElementById("refresh").style.display="inline";
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 
 }
 
